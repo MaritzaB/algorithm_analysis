@@ -51,7 +51,17 @@ algoritmo de tiempo $n^2$ podríamos realizar:
 \section*{Problema 2.6}
 
 \begin{enumerate}[(a)]
-    \item
+    
+\item El algoritmo consta de los ciclos anidados. El primero de ellos corre
+hasta $n$, por lo que ese ciclo vale $O(n)$. El segundo ciclo que está anidado
+en el primero, corre hasta las $n$ veces del de afuera y genera una matriz
+bi-dimensional sumando un número al iterador de afuera, por lo que el segundo
+ciclo corre a lo máximo a $n^2$. El tiempo total de este algoritmo es de
+$O(n^3)$
+
+\item 
+
+
 \end{enumerate}
 
 
