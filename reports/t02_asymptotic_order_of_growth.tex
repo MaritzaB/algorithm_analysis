@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+\usepackage{amsmath}
+\usepackage[shortlabels]{enumitem}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+
+\begin{document}
+\title{Análisis y diseño de algoritmos. \\ Tarea 02}
+\author{Ana Maritza Bello Yañez}
+\maketitle
+
+\section*{Problema 2.2}
+
+Si una computadora realiza $ 10^{10} $ operaciones por segundo, entonces el
+total de operaciones por hora = $3.6 * 10^{13} $.
+
+\begin{enumerate}[(a)]
+\item Si el total de operaciones es igual a $3.6 * 10^{13} $, entonces con un
+algoritmo de tiempo $n^2$ podríamos realizar:
+
+    \begin{equation}
+        n = \sqrt{3.6 * 10^{13}} = 6000000 \mathrm{\ operaciones\ por\ hora}
+    \end{equation}
+
+\item Para un algoritmo $T(n^3)$ podemos realizar:
+    \begin{equation}
+        n = \sqrt[3]{3.6 * 10^{13}} = 33019.2725 \mathrm{\ operaciones\ por\ hora}
+    \end{equation}
+
+\item Para un algoritmo de $T(100 n^2)$ podemos realizar:
+    \begin{equation}
+        n = \sqrt[2]{\frac{(3.6 * 10^{13})}{100}} = 600000 
+    \end{equation}
+
+\item Para $T(n \log{n})$ podemos realizar:
+
+\item Para $T(2^n)$ podemos realizar:
+    \begin{equation}
+        n = \frac{\log(3.6 * 10^{13})}{\log(2)} = 45.033 \mathrm{\ operaciones\ por\ hora}
+    \end{equation}
+
+\item Para $T(2^{2^n})$ podemos realizar:
+    \begin{equation}
+        n = \frac{\log(\frac{\log(3.6 * 10^{13}))}{\log(2)}}{\log(2)} = 5.492 \mathrm{\ operaciones\ por\ hora}
+    \end{equation}
+
+\end{enumerate}
+
+\section*{Problema 2.6}
+
+\begin{enumerate}[(a)]
+    \item
+\end{enumerate}
+
+
+\end{document}
