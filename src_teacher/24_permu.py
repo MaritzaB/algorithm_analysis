@@ -5,7 +5,7 @@ def compara(base,m):
     if (base**n) < math.factorial(n):
       return n
   return -1
-print(compara(2,100))
+#print(compara(2,100))
 
 def inserta(x,lst,i):
   # Devuelve una lista resultado de insertar x en la posiciòn i
@@ -27,6 +27,7 @@ def permuta(c):
     return [[]]
   return sum([inserta_multiple(c[0],i) for i in permuta(c[1:])],[])
 
+#print(permuta(lista))
 #print(len(permuta(lista)))
 
 def sgn(p):
@@ -44,6 +45,8 @@ def sgn(p):
   if count%2==0:
     return 1
   return -1
+
+print(sgn(lista))
 
 def det(a):
   # Calcula el determinante de la matris a 
@@ -67,11 +70,4 @@ def permuta1(c):
   for i in permuta1(c[1:]):
     lst=lst+inserta_multiple(c[0],i)
   return lst
-
-
-  
-
-
-  
-
 
