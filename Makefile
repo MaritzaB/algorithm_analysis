@@ -23,6 +23,9 @@ endef
 reports/t01_stable_matching.pdf: reports/t01_stable_matching.tex
 	$(renderLatex)
 
+reports/t02_asymptotic_order_of_growth.pdf: reports/t02_asymptotic_order_of_growth.tex
+	$(renderLatex)
+
 figures:
 	mkdir --parents reports/tables
 	mkdir --parents reports/figures
