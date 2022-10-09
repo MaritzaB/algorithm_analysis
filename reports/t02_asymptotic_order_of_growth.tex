@@ -29,22 +29,29 @@ algoritmo de tiempo $n^2$ podríamos realizar:
         n = \sqrt[3]{3.6 * 10^{13}} = 33019.2725 \mathrm{\ operaciones\ por\ hora}
     \end{equation}
 
+    Redondeado tenemos 33019 operaciones por hora.
+
 \item Para un algoritmo de $T(100 n^2)$ podemos realizar:
     \begin{equation}
-        n = \sqrt[2]{\frac{(3.6 * 10^{13})}{100}} = 600000 
+        n = \sqrt[2]{\frac{(3.6 * 10^{13})}{100}} = 600000 \mathrm{\ operaciones\ por\ hora}
     \end{equation}
 
 \item Para $T(n \log{n})$ podemos realizar:
+    Noméricamente: $9*10^{11}$
 
 \item Para $T(2^n)$ podemos realizar:
     \begin{equation}
         n = \frac{\log(3.6 * 10^{13})}{\log(2)} = 45.033 \mathrm{\ operaciones\ por\ hora}
     \end{equation}
 
+    Redondeado tenemos 45 operaciones por hora.
+
 \item Para $T(2^{2^n})$ podemos realizar:
     \begin{equation}
         n = \frac{\log(\frac{\log(3.6 * 10^{13}))}{\log(2)}}{\log(2)} = 5.492 \mathrm{\ operaciones\ por\ hora}
     \end{equation}
+
+    Redondeado tenemos 5 operaciones por hora.    
 
 \end{enumerate}
 
@@ -55,12 +62,23 @@ algoritmo de tiempo $n^2$ podríamos realizar:
 \item El algoritmo consta de los ciclos anidados. El primero de ellos corre
 hasta $n$, por lo que ese ciclo vale $O(n)$. El segundo ciclo que está anidado
 en el primero, corre hasta las $n$ veces del de afuera y genera una matriz
-bi-dimensional sumando un número al iterador de afuera, por lo que el segundo
-ciclo corre a lo máximo a $n^2$. El tiempo total de este algoritmo es de
-$O(n^3)$
+bi-dimensional sumando uno al iterador de afuera, esto es $j= i + 1$ hasta $n$,
+por lo que el segundo ciclo corre a lo máximo a $n^2$. El tiempo total de este
+algoritmo es de $O(n^3)$
 
-\item 
+\item Dado que el segundo ciclo es el de mayor número de iteraciones, podemos
+comenzar por enumerarlas de la siguientes forma:
 
+Cada vez que se realiza un ciclo, el número de iteraciones se reduce, por
+ejemplo:
+
+Para el el ciclo j=1, el máximo de operaciones será hasta n-1.
+
+Para un ciclo j=k, el máximo de operaciones será n-k.
+
+El número de operaciones mínimo nunca llega al $n^3$ dado que cada vez que itera
+el ciclo se reduce el número de operaciones, por lo que si es cercano pero nunca
+llega $n^3$.
 
 \end{enumerate}
 
