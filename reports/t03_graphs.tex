@@ -124,11 +124,28 @@ $n_{ancestros}(T) = n_{ancestros}(T') = n_{ancestros}(T'')$
 % con raíz en u, entonces G no puede contener ninguna arista que no pertenezca a
 % T.)
 
+Supongamos que nuestro grafo $G$ tiene una arista en $e = {x,y} \not\in T$.
+
+Ya que $T$ es un árbol inducido por DFS, alguno de los dos extremos debe ser
+ancestro del otro.
+
+* Digamos que $x$ es un ancestro de $y$.
+
+Ya que $T$ es un árbol inducido por BFS, la distancia entre los dos nodos desde
+$u$ en $T$, pueden diferir a lo máximo por uno.
+
+Pero si $x$ es ancestro de $y$, y la distancia de $u$ a $x$ en $T$ es a lo más
+uno mayor que la distancia desde $u$ hasta $x$, entonces $x$ debe de ser
+ancestro directo de $b$ en $T$.
+
+Por lo que si $\{x,y\} \in T$ contradice nuestra asunsión inicial que de
+$\{x,y\} \not\in T$
+
 \section*{Problema 3.7}
 
 % Unos amigos tuyos trabajan en redes inalámbricas y actualmente están estudiando
 % las propiedades de una red de n dispositivos móviles. A medida que los
-% dispositivos se mueven (en realidad, a medida que sus dueños humanos se mueven),
+% dispositivos se mueven (en realidad, a medida que sus dueños se mueven),
 % definen un gráfico en cualquier momento de la siguiente manera: hay un nodo que
 % representa cada uno de los n dispositivos, y hay un borde entre el dispositivo i
 % y el dispositivo j si las ubicaciones físicas de i y j no están separadas más de
@@ -146,11 +163,29 @@ $n_{ancestros}(T) = n_{ancestros}(T') = n_{ancestros}(T'')$
 % Aquí hay una forma concreta de formular la pregunta como una afirmación sobre
 % grafos:
 % 
-% Afirmación: Sea G un gráfico en n nodos, donde n es un número par. Si cada nodo
+% Afirmación: Sea G un grafo de n nodos, donde n es un número par. Si cada nodo
 % de G tiene grado al menos n/2, entonces G es conexo.
 % 
 % Decide si crees que la afirmación es verdadera o falsa y proporciona una prueba
 % de la afirmación o de su negación.
+
+Sea un grafo $G$ donde $\{\forall u \in V | deg(u) \geq (n/2) \}$, debemos demostrar
+que $G$ está conectado.
+
+\textbf{Demostración por contradicción}
+
+Supongamos que $G$ no está conectado, entonces tenemos dos casos:
+
+\textbf{Caso 1. Cuando son del mismo tamaño.}
+Sea $V$ el conjunto de nodos cuya cantidad de nodos conectados es la más
+pequeña, entonces $| V | \leq (n/2)$, ya que al menos dos nodos están conectados.
+
+\textbf{Caso 2. Cuando uno es más grande que el otro.}
+Si $|V|$ es mayor, entonces se debe de cumplir que $|V|-1 \leq (n/2)-1 \leq
+(n/2)$, lo cual es una contradicción.
+
+Por lo tanto, el grafo si está conectado.
+
 
 \section*{Problema 3.9}
 
