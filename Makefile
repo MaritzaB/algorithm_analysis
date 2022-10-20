@@ -1,4 +1,4 @@
-reports:
+all:
 	reports/t01_stable_matching.pdf
 
 .PHONY: \
@@ -24,6 +24,9 @@ reports/t01_stable_matching.pdf: reports/t01_stable_matching.tex
 	$(renderLatex)
 
 reports/t02_asymptotic_order_of_growth.pdf: reports/t02_asymptotic_order_of_growth.tex
+	$(renderLatex)
+
+reports/t03_graphs.pdf: reports/t03_graphs.tex
 	$(renderLatex)
 
 figures:
