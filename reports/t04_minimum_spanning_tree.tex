@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+\usepackage{amsmath}
+\usepackage[shortlabels]{enumitem}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+
+\begin{document}
+\title{Análisis y diseño de algoritmos. \\ Tarea 04}
+\author{Ana Maritza Bello Yañez}
+\maketitle
+
+\section*{Problema 4.3}
+% Prueba por inducción
+% Usted está asesorando a una empresa de camiones que hace una gran cantidad de
+% envíos comerciales de paquetes entre Nueva York y Boston. El volumen es tan alto
+% que tienen que enviar una cantidad de camiones cada día entre las dos
+% ubicaciones. Los camiones tienen un límite fijo W sobre la cantidad máxima de
+% peso que pueden transportar. Las cajas llegan a la estación de Nueva York una a
+% una, y cada paquete i tiene un peso w_i. La estación de camiones es bastante
+% pequeña, por lo que como máximo puede haber un camión en la estación en
+% cualquier momento. La política de la empresa requiere que las cajas se envíen en
+% el orden en que llegan; de lo contrario, un cliente podría molestarse al ver que
+% una caja que llegó después de la suya llegó a Boston más rápido. Por el momento,
+% la compañía está utilizando un algoritmo codicioso simple para empacar: empacan
+% las cajas en el orden en que llegan, y cuando la siguiente caja no cabe, envían
+% el camión por su camino.
+% 
+% Pero se preguntan si podrían estar usando demasiados camiones y quieren su
+% opinión sobre si la situación se puede mejorar. Así es como están pensando. Tal
+% vez se podría disminuir la cantidad de camiones necesarios enviando a veces un
+% camión que estaba menos lleno, y de esta manera permitir que los próximos
+% camiones estén mejor embalados.
+% 
+% Demuestre que, para un conjunto dado de cajas con pesos específicos, el
+% algoritmo codicioso actualmente en uso en realidad minimiza la cantidad de
+% camiones que se necesitan. Su prueba debe seguir el tipo de análisis que usamos
+% para el problema de programación de intervalos: debe establecer la optimización
+% de este algoritmo de empaquetamiento codicioso al identificar una medida bajo la
+% cual "se mantiene por delante" de todas las demás soluciones.
+
+\section*{Problema 4.8}
+% Prueba por contradicción
+
+%Suponga que le dan un grafo conectado G, donde los costos de las aristas son
+%todos distintos. Demuestre que G tiene un árbol de expansión mínimo único.
+
+\section*{Problema 4.9}
+
+%Una de las motivaciones básicas detrás del problema del árbol de expansión
+%mínimo es el objetivo de diseñar una red de expansión para un conjunto de nodos
+%con un costo total mínimo. Aquí exploramos otro tipo de objetivo: diseñar una
+%red de expansión en la que el borde más caro sea lo más barato posible.
+%
+%Específicamente, sea G = (V , E) un grafo conexo con n vértices, m aristas y
+%costos de aristas positivos que puede suponer que son todos distintos. Sea T =
+%(V , E ) un árbol generador de G; definimos el borde del cuello de botella de T
+%como el borde de T con el mayor costo.
+%
+%Un árbol de expansión T de G es un árbol de expansión de cuello de botella
+%mínimo si no hay un árbol de expansión T de G con un borde de cuello de botella
+%más económico.
+%
+%(a) ¿Todo árbol cuello de botella mínimo de G es un árbol generador mínimo de G?
+%Demostrar o dar un contraejemplo.
+%
+%(b) ¿Todo árbol generador mínimo de G es un árbol cuello de botella mínimo de G?
+%Demostrar o dar un contraejemplo.
+
+
+\section*{Problema 4.19}
+
+%Un grupo de diseñadores de redes de la empresa de comunicaciones CluNet se
+%enfrenta al siguiente problema. Tienen un grafo conexo G = (V , E), en el que
+%los nodos representan sitios que quieren comunicarse. Cada borde e es un enlace
+%de comunicación, con un ancho de banda disponible dado b e .
+%
+%Para cada par de nodos u, v ∈ V, quieren seleccionar un solo camino u-v P en el
+%que este par se comunicará. La tasa de cuello de botella b(P) de esta ruta P es
+%el ancho de banda mínimo de cualquier borde que contenga; es decir, b(P) = min
+%e∈P b e .
+%
+%La mejor tasa de cuello de botella alcanzable para el par u, v en G es
+%simplemente el máximo, sobre todos los caminos u-v P en G, del valor b(P).
+%
+%Se está volviendo muy complicado hacer un seguimiento de una ruta para cada par
+%de nodos, por lo que uno de los diseñadores de redes hace una sugerencia audaz:
+%
+%Tal vez uno pueda encontrar un árbol de expansión T de G de modo que para cada
+%par de nodos u, v, la única ruta u-v en el árbol realmente alcance la mejor tasa
+%de cuello de botella alcanzable para u, v en G. (En otras palabras, incluso si
+%podría elegir cualquier ruta u-v en todo el gráfico, no podría hacerlo mejor que
+%la ruta u-v en T).
+%
+%Esta idea es interrumpida rotundamente en las oficinas de CluNet durante unos
+%días, y hay una razón natural para el escepticismo: cada par de nodos puede
+%querer una ruta de aspecto muy diferente para maximizar su tasa de cuello de
+%botella; ¿Por qué debería haber un solo árbol que al mismo tiempo haga felices a
+%todos? Pero después de algunos intentos fallidos de descartar la idea, la gente
+%comienza a sospechar que podría ser posible.
+
+\end{document}
