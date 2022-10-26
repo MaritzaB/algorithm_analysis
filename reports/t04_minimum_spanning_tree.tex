@@ -7,6 +7,8 @@
 \title{Análisis y diseño de algoritmos. \\ Tarea 04}
 \author{Ana Maritza Bello Yañez}
 \maketitle
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
 
 \section*{Problema 4.3}
 % Prueba por inducción
@@ -37,11 +39,43 @@
 % de este algoritmo de empaquetamiento codicioso al identificar una medida bajo la
 % cual "se mantiene por delante" de todas las demás soluciones.
 
+No existe otra manera más eficiente de realizar los envíos ya que debemos de
+cumplir que los paquetes se envien conforme van llegando a la empresa. Si
+modificamos en orden de tal forma que los camiones no se vayan vacíos, entonces
+no se cumple la condición. Tampoco podemos llenar dos camiones al mismo tiempo
+porque necesitamos que solo haya uno en la empresa y tampoco podemos exceder la carga.
+
+
 \section*{Problema 4.8}
 % Prueba por contradicción
 
 %Suponga que le dan un grafo conectado G, donde los costos de las aristas son
 %todos distintos. Demuestre que G tiene un árbol de expansión mínimo único.
+
+Podemos inducir un árbol de expansión mínima sobre el grafo $G$ ya sea con el
+algoritmo de Prim o el de Kruskal.
+
+\textbf{Caso 1. Algoritmo de Prim}
+
+Comenzamos tomando un nodo cualquiera, nos vamos a fijar en cada una de sus
+aristas y vamos a tomar la de menor peso.
+
+Posteriormente del nodo visitado tomaremos la siguiente arista con menor peso, y
+así sucesivamente. Dado que todas las aristas son distintas, a partir del primer
+nodo visitado vamos a comenzar a agregar en order ascendente las aristas
+adyacentes a partir de esa primera. Si hubiera alguna más pequeña que aún no se
+ha visitado hasta este punto, entonces el algoritmo va a regresar al nodo cuya
+arista sea de menor tamaño a la última agregada. Así solo habrá un solo árbol de
+expansión mínimo, ya que los pesos de las aristas son únicos.
+
+\textbf{Caso 1. Algoritmo de Kruskal}
+
+Con el algoritmo de Kruskal comenzamos infiriendo nuestro árbol de expansión
+sobre $G$ con la arista de costo mínimo. De las aristas restantes vamos a seguir
+agregando la de menor tamaño. Dado que las aristas son de tamaños diferentes no
+habrá dos que se repitan por lo que el algoritmo tomará el único camino de forma
+ascendente y por lo tanto existirá un árbol de expansión mínima único.
+
 
 \section*{Problema 4.9}
 
@@ -58,13 +92,21 @@
 % Un árbol de expansión T de G es un árbol de expansión de cuello de botella
 % mínimo si no hay un árbol de expansión T de G con un borde de cuello de botella
 % más económico.
-% 
-% (a) ¿Todo árbol cuello de botella mínimo de G es un árbol generador mínimo de G?
-% Demostrar o dar un contraejemplo.
-% 
-% (b) ¿Todo árbol generador mínimo de G es un árbol cuello de botella mínimo de G?
+MBN: Minimum Bottleneck Tree.
+
+MST: Minimum Spanning Tree.
+
+(a) ¿Todo MBN(G) es un MST(G)?
 % Demostrar o dar un contraejemplo.
 
+Si, ya que si $T(G)$ es el $MBN(G)$, quiere decir que no existe otro árbol con
+cuello de botella más pequeño, y para el MST también se cumple esta condición.
+
+% 
+(b) ¿Todo MST(G) es un MBT(G)?
+% Demostrar o dar un contraejemplo.
+
+Como en el caso anterior, el $MBT(G) = MST(G)$
 
 \section*{Problema 4.19}
 
@@ -105,33 +147,35 @@ este caso el de Prim, pero en vez de aceptar los pesos mínimos, acepta los peso
 máximos.
 
 Este algoritmo acepta un grafo de pesos o costos con $n$ nodos. En el algoritmo,
-$T$ es el conjunto de aristas que conforman el árbol y $L$ es el conjunto de
-nodos incidentes con las aristas en $T$.\\
+$T$ es el conjunto de aristas que conforman el árbol y $P$ es el conjunto de
+nodos visitados o procesados con las aristas de $T$, $N$ el conjunto de nodos
+del grafo a ser procesados. \\
 \\
 \textbf{PASO 1}
 
-Selecciona un nodo inicial U.
+Selecciona un nodo inicial $U$.
 
-Establece $L={U}$ y $T=\emptyset$\\
+Establece $ P={U} $ y $T=\emptyset$\\
 \\
 \textbf{PASO 2}
 
-\textbf{\textit{while }} $L$ esté vacía \{
+\textbf{\textit{while }} $N$ no esté vacía \{
     \begin{itemize}
         \item Escoge la arista mas pesada o de mayor costo
         \item Agrega la arista a $T$
-        \item Agrega el nodo a $L$
+        \item Agrega el nodo a $P$ y quítalo de $N$.
     \end{itemize}
     \}
 \textbf{\textit{end while }}\\
 \\
 \textbf{PASO 3}
 
-\textbf{\textit{if }} $|L| < n$
+\textbf{\textit{if }} $|P| < n$
 El grafo no está conectado y por lo tanto no tiene un árbol de expansión máximo.
+Regresar al paso 2.
     
 \textbf{\textit{elif }}
-Las aristas en $T$ y sus vértices incidentes forman un árbol de expansión máxima.
+Las aristas en $T$ y los nodos visitados forman un árbol de expansión máxima.
 
 \textbf{\textit{endif }}
 
