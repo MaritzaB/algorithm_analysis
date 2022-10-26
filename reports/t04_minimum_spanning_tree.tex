@@ -3,10 +3,6 @@
 \usepackage{amsmath}
 \usepackage[shortlabels]{enumitem}
 
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
-
-
 \begin{document}
 \title{Análisis y diseño de algoritmos. \\ Tarea 04}
 \author{Ana Maritza Bello Yañez}
@@ -49,25 +45,25 @@
 
 \section*{Problema 4.9}
 
-%Una de las motivaciones básicas detrás del problema del árbol de expansión
-%mínimo es el objetivo de diseñar una red de expansión para un conjunto de nodos
-%con un costo total mínimo. Aquí exploramos otro tipo de objetivo: diseñar una
-%red de expansión en la que el borde más caro sea lo más barato posible.
-%
-%Específicamente, sea G = (V , E) un grafo conexo con n vértices, m aristas y
-%costos de aristas positivos que puede suponer que son todos distintos. Sea T =
-%(V , E ) un árbol generador de G; definimos el borde del cuello de botella de T
-%como el borde de T con el mayor costo.
-%
-%Un árbol de expansión T de G es un árbol de expansión de cuello de botella
-%mínimo si no hay un árbol de expansión T de G con un borde de cuello de botella
-%más económico.
-%
-%(a) ¿Todo árbol cuello de botella mínimo de G es un árbol generador mínimo de G?
-%Demostrar o dar un contraejemplo.
-%
-%(b) ¿Todo árbol generador mínimo de G es un árbol cuello de botella mínimo de G?
-%Demostrar o dar un contraejemplo.
+% Una de las motivaciones básicas detrás del problema del árbol de expansión
+% mínimo es el objetivo de diseñar una red de expansión para un conjunto de nodos
+% con un costo total mínimo. Aquí exploramos otro tipo de objetivo: diseñar una
+% red de expansión en la que el borde más caro sea lo más barato posible.
+% 
+% Específicamente, sea G = (V , E) un grafo conexo con n vértices, m aristas y
+% costos de aristas positivos que puede suponer que son todos distintos. Sea T =
+% (V , E ) un árbol generador de G; definimos el borde del cuello de botella de T
+% como el borde de T con el mayor costo.
+% 
+% Un árbol de expansión T de G es un árbol de expansión de cuello de botella
+% mínimo si no hay un árbol de expansión T de G con un borde de cuello de botella
+% más económico.
+% 
+% (a) ¿Todo árbol cuello de botella mínimo de G es un árbol generador mínimo de G?
+% Demostrar o dar un contraejemplo.
+% 
+% (b) ¿Todo árbol generador mínimo de G es un árbol cuello de botella mínimo de G?
+% Demostrar o dar un contraejemplo.
 
 
 \section*{Problema 4.19}
@@ -100,5 +96,43 @@
 %botella; ¿Por qué debería haber un solo árbol que al mismo tiempo haga felices a
 %todos? Pero después de algunos intentos fallidos de descartar la idea, la gente
 %comienza a sospechar que podría ser posible.
+En este caso, necesitamos encontrar el camino con mayor ancho posible,
+en otras palabras, queremos encontrar el árbol de expansión para el cual, la
+suma de sus pesos no sea el mínimo posible, sino el máximo.
+
+Para encontrarlo podemos usar el algoritmo del árbol de expansión mínima, en
+este caso el de Prim, pero en vez de aceptar los pesos mínimos, acepta los pesos
+máximos.
+
+Este algoritmo acepta un grafo de pesos o costos con $n$ nodos. En el algoritmo,
+$T$ es el conjunto de aristas que conforman el árbol y $L$ es el conjunto de
+nodos incidentes con las aristas en $T$.\\
+\\
+\textbf{PASO 1}
+
+Selecciona un nodo inicial U.
+
+Establece $L={U}$ y $T=\emptyset$\\
+\\
+\textbf{PASO 2}
+
+\textbf{\textit{while }} $L$ esté vacía \{
+    \begin{itemize}
+        \item Escoge la arista mas pesada o de mayor costo
+        \item Agrega la arista a $T$
+        \item Agrega el nodo a $L$
+    \end{itemize}
+    \}
+\textbf{\textit{end while }}\\
+\\
+\textbf{PASO 3}
+
+\textbf{\textit{if }} $|L| < n$
+El grafo no está conectado y por lo tanto no tiene un árbol de expansión máximo.
+    
+\textbf{\textit{elif }}
+Las aristas en $T$ y sus vértices incidentes forman un árbol de expansión máxima.
+
+\textbf{\textit{endif }}
 
 \end{document}
