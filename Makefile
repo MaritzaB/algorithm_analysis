@@ -1,5 +1,6 @@
 all: \
-	reports/t05_divide_and_conquer.pdf
+	reports/t06_dynamic_programming.pdf
+#	reports/t05_divide_and_conquer.pdf
 #	reports/t04_minimum_spanning_tree.pdf 
 #	reports/t03_graphs.pdf
 #	reports/t02_asymptotic_order_of_growth.pdf
@@ -37,6 +38,9 @@ reports/t04_minimum_spanning_tree.pdf: reports/t04_minimum_spanning_tree.tex
 	$(renderLatex)
 
 reports/t05_divide_and_conquer.pdf: reports/t05_divide_and_conquer.tex
+	$(renderLatex)
+
+reports/t06_dynamic_programming.pdf: reports/t06_dynamic_programming.tex
 	$(renderLatex)
 
 figures:
