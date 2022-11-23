@@ -31,11 +31,49 @@ siguiente:
 
 \begin{center}
     $DB_1:$
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $a$ & $b$ & ... & $k$ & ... & $n-1$ & $n$
+    \end{tabular}
 \end{center}
 
 \begin{center}
     $DB_2:$
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $a$ & $b$ & ... & $k$ & ... & $n-1$ & $n$
+    \end{tabular}
 \end{center}
+
+Es decir, $k = n/2$ para cada una de las bases de datos. Por lo que $DB_1(k)$ es
+la media de la primera base de datos y $BD_2(k)$ la media para la segunda base
+de datos. Si comparamos las medias de cada una de las bases de datos,
+forzosamente una de las dos medias será mayor que la otra, ya que una de las
+condiciones es que los números no se repiten. Por lo tanto tendremos los
+siguientes casos:
+
+Caso 1: $DB_1(k) > DB_2(k)$
+
+Caso 2: $DB_2(k) > DB_1(k)$
+
+Si tenemos el caso 1, entonces quiere decir que la mediana de $DB_2$ es mayor
+que todos los números de la primera mitad de $DB_2$, incluyendo la mediana.
+También, es mayor que $DB_2(k-1)$, por lo que si combinaramos las bases de
+datos, $DB_2(k)$ ocuparía el lugar $2k$ de la lista combinada.
+
+Entonces, podemos eliminar la primera mitad de elementos de $DB_1$ y la mitad de
+elementos mayores a $DB_2$. Con esto nos queda una lista con un número de
+elementos $n$ igual que la que teníamos originalmente. Por lo que podremos usar
+recursión sobre esa misma lista.
+
+\pagebreak
+
+\begin{verbatim}
+    median(a,b,c)
+        if n=1 then return min(A(a+k),B(b+k)) //caso base
+        k=[1/2 n]
+        if A(a+k)<B(b+k)
+            then return median(k, a+[1/2n], b)
+            else return median(k, a, b+[1/2n])
+\end{verbatim}
 
 \section*{Problema 5.3}
 
@@ -70,5 +108,12 @@ siguiente:
 % especifica de la siguiente manera implícita: para cada nodo v, puede determinar
 % el valor x_v sondeando el nodo v. Muestre cómo encontrar un mínimo local de T
 % usando solo O(log n) sondea a los nodos de T.
+
+El caso base de este problema sería cuando tengamos un árbol de un nivel
+solamente, es decir, la raíz con sus dos nodos hijos. En este caso si la raíz es
+menor que sus dos hijos, entonces es un mínimo local. En caso de que cualquiera
+de sus dos hijos sea menor, entonces seguirá con el nodo hijo más pequeño y así
+hasta que termine en un nodo $v$ donde este sea menor que sus nodos hijos, o
+bien hasta alcanzar $w$.
 
 \end{document}
