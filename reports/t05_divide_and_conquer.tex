@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+\usepackage{amsmath}
+\usepackage[shortlabels]{enumitem}
+
+\begin{document}
+\title{Análisis y diseño de algoritmos. \\ Tarea 05}
+\author{Ana Maritza Bello Yañez}
+\maketitle
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\section*{Problema 5.1}
+
+% Está interesado en analizar algunos datos difíciles de obtener de dos bases de
+% datos separadas. Cada base de datos contiene n valores numéricos, por lo que hay
+% 2n valores en total, y puede suponer que no hay dos valores iguales.
+% Le gustaría determinar la mediana de este conjunto de 2n valores, que
+% definiremos aquí como el enésimo valor más pequeño.
+% Sin embargo, la única forma de acceder a estos valores es mediante consultas a
+% las bases de datos. En una sola consulta, puede especificar un valor k para una
+% de las dos bases de datos, y la base de datos elegida devolverá el k-ésimo valor
+% más pequeño que contiene. Dado que las consultas son costosas, le gustaría
+% calcular la mediana utilizando la menor cantidad de consultas posible.
+% Proporcione un algoritmo que encuentre el valor de la mediana utilizando como
+% máximo consultas O (log n).
+
+Si tenemos dos bases de datos de $n$ elementos, y el $k$-ésimo elemento es la
+media de cada una de las bases de datos, entonces tenemos algo como lo
+siguiente:
+
+\begin{center}
+    $DB_1:$
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $a$ & $b$ & ... & $k$ & ... & $n-1$ & $n$
+    \end{tabular}
+\end{center}
+
+\begin{center}
+    $DB_2:$
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $a$ & $b$ & ... & $k$ & ... & $n-1$ & $n$
+    \end{tabular}
+\end{center}
+
+Es decir, $k = n/2$ para cada una de las bases de datos. Por lo que $DB_1(k)$ es
+la media de la primera base de datos y $BD_2(k)$ la media para la segunda base
+de datos. Si comparamos las medias de cada una de las bases de datos,
+forzosamente una de las dos medias será mayor que la otra, ya que una de las
+condiciones es que los números no se repiten. Por lo tanto tendremos los
+siguientes casos:
+
+Caso 1: $DB_1(k) > DB_2(k)$
+
+Caso 2: $DB_2(k) > DB_1(k)$
+
+Si tenemos el caso 1, entonces quiere decir que la mediana de $DB_2$ es mayor
+que todos los números de la primera mitad de $DB_2$, incluyendo la mediana.
+También, es mayor que $DB_2(k-1)$, por lo que si combinaramos las bases de
+datos, $DB_2(k)$ ocuparía el lugar $2k$ de la lista combinada.
+
+Entonces, podemos eliminar la primera mitad de elementos de $DB_1$ y la mitad de
+elementos mayores a $DB_2$. Con esto nos queda una lista con un número de
+elementos $n$ igual que la que teníamos originalmente. Por lo que podremos usar
+recursión sobre esa misma lista.
+
+\pagebreak
+
+\begin{verbatim}
+    median(a,b,c)
+        if n=1 then return min(A(a+k),B(b+k)) //caso base
+        k=[1/2 n]
+        if A(a+k)<B(b+k)
+            then return median(k, a+[1/2n], b)
+            else return median(k, a, b+[1/2n])
+\end{verbatim}
+
+\section*{Problema 5.3}
+
+% Suponga que está consultando para un banco que está preocupado por la detección
+% de fraudes, y acuden a usted con el siguiente problema. Tienen una colección de
+% n tarjetas bancarias que han confiscado, sospechando que se están utilizando en
+% fraudes. Cada tarjeta bancaria es un pequeño objeto de plástico que contiene una
+% banda magnética con algunos datos encriptados y corresponde a una cuenta única
+% en el banco. Cada cuenta puede tener muchas tarjetas bancarias correspondientes,
+% y diremos que dos tarjetas bancarias son equivalentes si corresponden a la misma
+% cuenta.
+% Es muy difícil leer directamente el número de cuenta de una tarjeta bancaria,
+% pero el banco tiene un "probador de equivalencias" de alta tecnología que toma
+% dos tarjetas bancarias y, después de realizar algunos cálculos, determina si son
+% equivalentes.
+% Su pregunta es la siguiente: entre la colección de n cartas, ¿hay un conjunto de
+% más de n/2 de ellas que sean todas equivalentes entre sí?
+% Suponga que las únicas operaciones factibles que puede hacer con las tarjetas
+% son elegir dos de ellas y conectarlas al probador de equivalencia. Muestre cómo
+% decidir la respuesta a su pregunta con solo invocaciones O (n log n) del
+% probador de equivalencia.
+
+\section*{Problema 5.6}
+
+% Considere un árbol binario completo T de n nodos, donde n = 2^d-1 para alguna
+% d.
+% Cada nodo v de T está etiquetado con un número real x_v . Puede suponer que los
+% números reales que etiquetan los nodos son todos distintos. Un nodo v de T es un
+% mínimo local si la etiqueta x_v es menor que la etiqueta x_w para todos los
+% nodos w que están unidos a v por una arista.
+% Se le proporciona un árbol binario T tan completo, pero el etiquetado solo se
+% especifica de la siguiente manera implícita: para cada nodo v, puede determinar
+% el valor x_v sondeando el nodo v. Muestre cómo encontrar un mínimo local de T
+% usando solo O(log n) sondea a los nodos de T.
+
+El caso base de este problema sería cuando tengamos un árbol de un nivel
+solamente, es decir, la raíz con sus dos nodos hijos. En este caso si la raíz es
+menor que sus dos hijos, entonces es un mínimo local. En caso de que cualquiera
+de sus dos hijos sea menor, entonces seguirá con el nodo hijo más pequeño y así
+hasta que termine en un nodo $v$ donde este sea menor que sus nodos hijos, o
+bien hasta alcanzar $w$.
+
+\end{document}

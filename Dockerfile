@@ -20,4 +20,8 @@ RUN apt-get update && \
 
 RUN pip install --upgrade pytest
 RUN pip install black
-RUN pip install -U matplotlib pandas numpy
+RUN pip install --upgrade \
+    matplotlib \
+    pandas \
+    numpy \
+    networkx
