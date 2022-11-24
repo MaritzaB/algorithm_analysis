@@ -1,0 +1,202 @@
+\documentclass{article}
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\floatname{algorithm}{Algoritmo}
+
+\begin{document}
+\title{Análisis y diseño de algoritmos. \\ Tarea 01}
+\author{Ana Maritza Bello Yañez}
+\maketitle
+
+\section*{Problema 1.3}
+Supongamos los siguientes raitings de programación para la televisora $A$:
+
+\begin{equation}
+    S = \{7.0, 3.9\}
+\end{equation}
+
+Y para la televisora $B$:
+
+\begin{equation}
+    T = \{5.8, 2.5\}
+\end{equation}
+
+Una instancia que generaría \textit{stable matching} sería el siguiente, donde
+la televisora $A$, gana dos slots:
+ 
+\begin{equation}
+    (S,T) = \{(7.0,5.8),(3.9,2.5)\}
+\end{equation}
+
+Ya que la televisora A gana un slot cuando 7 compite con 5.8, y el otro cuando
+3.9 compite con 2.5.
+
+Pero la televisora $B$ podría cambiar su horario a $T'$:
+
+\begin{equation}
+    T' = \{2.5, 5.8\}
+\end{equation}
+
+Con el fin de que 5.8 le gane a 3.9.
+Por lo que en $(S,T')$ existe inestabilidad.
+
+\section*{Problema 1.4}
+
+\begin{algorithm}
+\caption{Algoritmo para asociar estudiantes a hospitales}\label{alg:cap}
+\begin{algorithmic}
+\Require Inicialmente todos los $h \in H$ and $s \in S$ están libres
+\While{Haya un hospital $h$ que tenga lugares y no le haya propuesto a cada estudiante}
+    \State Escoge al hospital $h$
+    \State Sea $s$ el estudiante mejor clasificado en la lista de preferencias de $h'$ a quien $h$ aún no le ha propuesto residencia
+    \If{ $s$ está libre}
+        \State $(h,s)$ hacen pareja
+    \Else{$s$ es actualmente residente de $h'$}
+        \If{$s$ prefiere a $h'$ sobre $h$}
+            \State el lugar en $h$ permanece libre
+        \Else{$s$ prefiere a $h$ sobre $h'$}
+            \State $(h,s)$ hacen pareja
+            \State el lugar en $h'$ se libera
+        \EndIf
+    \EndIf
+\EndWhile
+\State Regresa el conjunto de parejas de hospitales y residentes $C$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection*{Complejidad del problema}
+La complejidad del problema es $\phi(n^2)$.
+
+El algoritmo termina en a lo máximo $m*(m-n)$ iteraciones. Siendo $m$ en número de
+lugares ofertados por los hospitales y $n$ el número de residentes.
+
+Por cada loop del ciclo while, un hospital oferta un lugar a un estudiante. Pero
+solo hay $m$ cantidad de lugares para ofertar, por lo que solo hay $n²$ posibles
+propuestas.
+
+\subsection*{Demostración por contradicción}
+
+Demuestra que siempre hay una asignación estable de estudiantes a hospitales.
+
+Supongamos que en el conjunto $C = {(h_1,s_1),(h_2,s_2)}$ existe una pareja
+inestable $(h_1,s_2)$:
+1. Esto quiere decir que $h_1$ nunca le propuso a $(s_2)$, por lo que prefiere a
+su pareja actual por lo que sería una pareja estable.
+
+ó 
+
+2. $h_1$ le propuso a $(s_2)$, por lo que si no están juntos entonces el
+estudiante $s_2$ rechazó a $h_1$, por lo que el estudiante prefiere su
+residencia actual sobre $h_1$, y por lo tanto es una pareja estable.
+
+
+\section*{Problema 1.5a}
+
+\begin{algorithm}
+\caption{Algoritmo para asociar a hombres y mujeres con una lista de preferencia
+en la que pueden haber empates}\label{alg:cap}
+    \begin{algorithmic}
+    \Require Inicialmente todos los $m \in M$ y $w \in W$ están libres
+    \While{Haya un hombre $m$ que esté libre y que no se le haya propuesto a cada mujer}
+        \State Escoge al hombre $m$
+        \State Sea $w$ la mujer mejor clasificada en la lista de preferencias de $m'$ a
+        quien $m$ aún no se le ha propuesto
+        \If{ $w$ está libre}
+            \State $(m,w)$ se vuelven pareja
+        \Else{$w$ está comprometida con $m'$}
+            \If{$w$ prefiere a $m'$ sobre $m$}
+                \State $m$ permanece libre
+            \Else{$w$ prefiere a $m$ sobre $m'$}
+                \State $(m,w)$ se vuelven pareja
+                \State $m'$ se queda libre
+            \EndIf
+        \EndIf
+    \EndWhile
+    \State Regresa el conjunto de parejas comprometidas $S$
+    \end{algorithmic}
+\end{algorithm}
+
+\subsection*{Complejidad del problema}
+La complejidad del problema es $\phi(n^2)$.
+    
+El algoritmo termina en a lo máximo $n^2$ iteraciones.
+    
+Por cada loop del ciclo while, un hombre le hace un propuesta a una mujer. Por
+lo que solo hay $n^2$ iterciones posibles. 
+    
+\subsection*{Demostración por contradicción}
+
+Inestabilidad fuerte: Consiste en un hombre $m$ y una mujer $w$ tal que $m$ y
+$w$ se prefieren sobre su pareja actual.
+    
+¿Existe un \textit{perfect matching} sin inestabilidad fuerte?
+    
+Supongamos que en el conjunto $S = {(m_1,w_1),(m_2,w_2)}$ existe una pareja
+inestable $(m_1,w_2)$:
+1. Esto quiere decir que $m_1$ nunca le propuso a $(w_2)$, por lo que prefiere a
+su pareja actual por lo que sería una pareja estable.
+
+ó 
+
+2. $m_1$ le propuso a $w_2$, por lo que si no están juntos entonces $w_2$
+rechazó a $m_1$, por lo prefiere a su pareja actual sobre $m_1$, y por lo
+tanto es una pareja estable.
+
+\section*{Problema 1.7}
+
+\begin{algorithm}
+\caption{Algoritmo para encontrar cambios válidos en el flujo de salidas y
+entradas de cajas de conexión}\label{alg:cap}
+    \begin{algorithmic}
+        \Require Inicialmente todos las entradas $e \in E$ y salidas $s \in S$ están libres
+        \Require Invertimos el orden de prioridad de las salidas
+        \While{Haya una entrada $e$ sin conectar y no haya propuesto a cada salida}
+        \State Escoge una entrada $e$
+        \State Sea $s$ la primera salida en la lista de preferencias de $e'$ a
+        la que $e$ aún no se le ha propuesto
+        \If{ $s$ está libre}
+            \State $(e,s)$ se pueden conectar
+        \Else{$s$ ya está conectada con $e'$}
+            \If{$s$ prefiere a $e'$ sobre $e$}
+                \State $e$ permanece libre
+            \Else{$s$ prefiere a $e$ sobre $e'$}
+                \State $(e,s)$ se pueden conectar
+                \State $s'$ se queda libre
+            \EndIf
+        \EndIf
+    \EndWhile
+    \State Regresa el conjunto de parejas que pueden ser conexión $C$
+    \end{algorithmic}
+\end{algorithm}
+
+\subsection*{Complejidad del problema}
+La complejidad del problema es $\phi(n^2)$.
+    
+El algoritmo termina en a lo máximo $n^2$ iteraciones.
+    
+Por cada loop del ciclo while, un entrada le hace un propuesta a una salida. Por
+lo que solo hay $n^2$ iterciones posibles. 
+    
+\subsection*{Demostración por contradicción}
+
+Inestabilidad fuerte: Consiste en una entrada $e$ y una salida $s$ tal que $e$ y
+$s$ se prefieren sobre su pareja actual.
+    
+¿Existe un \textit{perfect matching} sin inestabilidad fuerte?
+    
+Supongamos que en el conjunto $C = {(e_1,s_1),(e_2,s_2)}$ existe una pareja
+inestable $(m_1,w_2)$:
+1. Esto quiere decir que $e_1$ nunca le propuso a $(s_2)$, por lo que prefiere a
+su pareja actual por lo que sería una pareja estable.
+
+ó 
+
+2. $e_1$ le propuso a $s_2$, por lo que si no están juntos entonces $s_2$
+rechazó a $s_1$, por lo prefiere a su pareja actual sobre $e_1$, y por lo
+tanto es una pareja estable.
+
+
+\end{document}

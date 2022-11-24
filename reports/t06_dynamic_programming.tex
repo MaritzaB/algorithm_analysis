@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+\usepackage{amsmath}
+\usepackage[shortlabels]{enumitem}
+
+\begin{document}
+\title{Análisis y diseño de algoritmos. \\ Tarea 06}
+\author{Ana Maritza Bello Yañez}
+\maketitle
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\section*{Problema 6.1}
+% Sea G = (V , E) un grafo no dirigido con n nodos. Recuerde que un subconjunto de
+% los nodos se llama conjunto independiente si dos de ellos no están unidos por
+% una arista. En general, es difícil encontrar grandes conjuntos independientes;
+% pero aquí veremos que se puede hacer de manera eficiente si el gráfico es lo
+% suficientemente "simple".
+% 
+% Llame a un gráfico G = (V , E) un camino si sus nodos se pueden escribir como v
+% 1 , v 2 , . . . , v n , con una arista entre vi y v j si y solo si los números i
+% y j difieren exactamente en 1. Con cada nodo v i , asociamos un peso entero
+% positivo w i .
+% 
+% Considere, por ejemplo, la ruta de cinco nodos dibujada en la figura 6.28. Los
+% pesos son los números dibujados dentro de los nodos.
+% 
+% El objetivo de esta pregunta es resolver el siguiente problema:
+% 
+% Encuentre un conjunto independiente en un camino G cuyo peso total sea lo más
+% grande posible.
+
+\begin{enumerate}
+\item Dé un ejemplo para mostrar que el siguiente algoritmo no siempre encuentra
+un conjunto independiente de peso total máximo.
+
+\textbf{Solucion:} Supongamos un grafo que tiene 3 pesos diferentes, siendo el
+de el medio el de mayor peso. Por ejemplo: 5 - 6 - 4, con el algoritmos greedy
+tomaríamos el nodo 6=6, sin embargo el \textit{independent set} consiste del 5 y
+el 4.
+
+\item Dé un ejemplo para mostrar que el siguiente algoritmo tampoco encuentra
+siempre un conjunto independiente de peso total máximo.
+
+\textbf{Solución: }
+
+Supongamos un grafo con con los nodos: 2-7-6-4. En este caso tenemos dos pares
+de conjuntos independientes posibles, el 2 y 6 y el otro conjunto 7 y 4. El
+algoritmo podría tomar el primer conjunto, sin embargo el de mayor peso es el de
+los nodos 7 y 4.
+\end{enumerate}
+
+\section*{Problema 6.2}
+
+\section*{Problema 6.8}
+
+\end{document}

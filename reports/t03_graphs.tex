@@ -1,0 +1,209 @@
+\documentclass{article}
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+\usepackage{amsmath}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+
+\begin{document}
+\title{Análisis y diseño de algoritmos. \\ Tarea 03}
+\author{Ana Maritza Bello Yañez}
+\maketitle
+
+\section*{Problema 3.5}
+
+% Un árbol binario es un árbol con raíz en el que cada nodo tiene como máximo dos
+% hijos. Muestre por inducción que en cualquier árbol binario el número de nodos
+% con dos hijos es exactamente uno menos que el número de hojas.
+
+Sean $n_{total}(T)$ el número de hojas de un árbol binario $T$, y sea
+$n_{ancestros}(T)$ el número de nodos con dos hijos del árbol binario $T$.
+
+Debemos demostrar que $n_{ancestros}(T)$ = $n_{total}(T) - 1$.
+
+\textbf{Caso Base:} $n_{total} = 1$, por lo tanto $n_{ancestros}(T)= 1 - 1$, lo
+que quiere decir que el árbol tiene una sola hoja y no existen nodos con dos
+hijos.
+
+Ahora, sea un árbol binario con más de un nodo, entonces existe un nodo
+\textit{hoja}, $v$, que no es la raíz, ya que $T$ tiene más de un nodo.
+Por lo tanto existe un nodo $u$ que es \textit{ancestro} de $v$.
+
+\begin{figure}[h!]
+    \begin{center}		
+    \begin{tikzpicture}[level distance=1cm, level 1/.style={sibling distance=3cm},
+      level 2/.style={sibling distance=2cm}, every node/.style={circle, draw,
+      align=center} ]
+          \centering
+          \node[circle,draw]{}
+          child{
+            node{}
+          }
+        child{
+          node{$u$} child{
+          node{$w$}} child{node{$v$}
+          }
+        };
+        \end{tikzpicture}
+    \end{center}
+    \caption{Representación del árbol binario $T$ con los nodos $u$, $v$ y $w$.}
+\end{figure}
+
+Si eliminamos el nodo $v$ del árbol binario $T$, tenemos dos casos:
+
+\textbf{Caso 1.} Que en el árbol resultante $T'$, el nodo ancestro $u$, no tenga
+otro nodo hijo, por lo tanto el nodo $u$ se convierte en un nodo \textit{hoja}. 
+
+\begin{figure}[h!]
+    \begin{center}		
+    \begin{tikzpicture}[level distance=1cm, level 1/.style={sibling distance=3cm},
+      level 2/.style={sibling distance=2cm}, every node/.style={circle, draw,
+      align=center} ]
+          \centering
+          \node[circle,draw]{}
+          child{
+            node{1}
+          }
+        child{
+          node{$u$}
+        };
+    \end{tikzpicture}
+    \end{center}
+    \caption{Representación del árbol binario recortado $T'$, donde el nodo $u$ no
+    tiene nodos hijos, por lo tanto se convierte en un nodo hoja.}
+\end{figure}
+
+En este caso $n_{total}(T') = m_{ancestros}(T') + 1$ o dicho de otra forma
+$n_{ancestros}(T') = n_{total}(T') - 1$
+
+\textbf{Caso 2.} Que en el árbol resultante $T''$, el nodo ancestro $u$, tenga
+otro nodo hijo $w$, en cuyo caso: $n_{ancestros}(T'') = n_{total}(T'') - 1$, ó dicho de
+otra forma; $n_{total}(T'') = m_{ancestros}(T'') + 1$
+
+\begin{figure}[h!]
+    \begin{center}		
+    \begin{tikzpicture}[level distance=1cm, level 1/.style={sibling distance=3cm},
+      level 2/.style={sibling distance=2cm}, every node/.style={circle, draw,
+      align=center} ]
+          \centering
+          \node[circle,draw]{}
+          child{
+            node{}
+          }
+        child{
+          node{$u$} child{
+          node{$w$}}
+        };
+    \end{tikzpicture}
+    \end{center}
+    \caption{Representación del árbol binario recortado $T''$, donde el nodo $u$ tiene
+    un nodo hijo $w$.}
+\end{figure}
+
+Por lo que para los tres casos se cumple que:
+
+$n_{total}(T) = n_{total}(T') =
+n_{total}(T'')$
+
+o bien; 
+
+$n_{ancestros}(T) = n_{ancestros}(T') = n_{ancestros}(T'')$
+
+\section*{Problema 3.6}
+
+% Tenemos un grafo conexo G = (V , E) y un vértice específico u ∈ V. Supongamos
+% que calculamos un árbol de búsqueda primero en profundidad con raíz en u, y
+% obtenemos un árbol T que incluye todos los nodos de G. Supongamos que luego
+% calculamos un árbol de búsqueda primero en anchura con raíz en u, y obtenga el
+% mismo árbol T. Demuestre que G = T. (En otras palabras, si T es tanto un árbol
+% de búsqueda primero en profundidad como un árbol de búsqueda primero en anchura
+% con raíz en u, entonces G no puede contener ninguna arista que no pertenezca a
+% T.)
+
+Supongamos que nuestro grafo $G$ tiene una arista en $e = {x,y} \not\in T$.
+
+Ya que $T$ es un árbol inducido por DFS, alguno de los dos extremos debe ser
+ancestro del otro.
+
+* Digamos que $x$ es un ancestro de $y$.
+
+Ya que $T$ es un árbol inducido por BFS, la distancia entre los dos nodos desde
+$u$ en $T$, pueden diferir a lo máximo por uno.
+
+Pero si $x$ es ancestro de $y$, y la distancia de $u$ a $x$ en $T$ es a lo más
+uno mayor que la distancia desde $u$ hasta $x$, entonces $x$ debe de ser
+ancestro directo de $b$ en $T$.
+
+Por lo que si $\{x,y\} \in T$ contradice nuestra asunsión inicial que de
+$\{x,y\} \not\in T$
+
+\section*{Problema 3.7}
+
+% Unos amigos tuyos trabajan en redes inalámbricas y actualmente están estudiando
+% las propiedades de una red de n dispositivos móviles. A medida que los
+% dispositivos se mueven (en realidad, a medida que sus dueños se mueven),
+% definen un gráfico en cualquier momento de la siguiente manera: hay un nodo que
+% representa cada uno de los n dispositivos, y hay un borde entre el dispositivo i
+% y el dispositivo j si las ubicaciones físicas de i y j no están separadas más de
+% 500 metros. (Si es así, decimos que i y j están "en el rango" uno del otro).
+% 
+% Les gustaría que la red de dispositivos estuviera conectada en todo momento, por
+% lo que restringieron el movimiento de los dispositivos para satisfacer la
+% siguiente propiedad: en todo momento, cada dispositivo i está dentro de los 500
+% metros de al menos menos n/2 de los otros dispositivos. (Supondremos que n es un
+% número par).
+% 
+% Lo que les gustaría saber es: ¿Esta propiedad por sí sola garantiza que la red
+% permanecerá conectada?
+% 
+% Aquí hay una forma concreta de formular la pregunta como una afirmación sobre
+% grafos:
+% 
+% Afirmación: Sea G un grafo de n nodos, donde n es un número par. Si cada nodo
+% de G tiene grado al menos n/2, entonces G es conexo.
+% 
+% Decide si crees que la afirmación es verdadera o falsa y proporciona una prueba
+% de la afirmación o de su negación.
+
+Sea un grafo $G$ donde $\{\forall u \in V | deg(u) \geq (n/2) \}$, debemos demostrar
+que $G$ está conectado.
+
+\textbf{Demostración por contradicción}
+
+Supongamos que $G$ no está conectado, entonces tenemos dos casos:
+
+\textbf{Caso 1. Cuando son del mismo tamaño.}
+Sea $V$ el conjunto de nodos cuya cantidad de nodos conectados es la más
+pequeña, entonces $| V | \leq (n/2)$, ya que al menos dos nodos están conectados.
+
+\textbf{Caso 2. Cuando uno es más grande que el otro.}
+Si $|V|$ es mayor, entonces se debe de cumplir que $|V|-1 \leq (n/2)-1 \leq
+(n/2)$, lo cual es una contradicción.
+
+Por lo tanto, el grafo si está conectado.
+
+
+% \section*{Problema 3.9}
+
+% Hay una intuición natural de que dos nodos que están muy separados en una red de
+% comunicación, separados por muchos saltos, tienen una conexión más tenue que dos
+% nodos que están muy juntos. Hay una serie de resultados algorítmicos que se
+% basan en cierta medida en diferentes formas de precisar esta noción. Aquí hay
+% uno que involucra la susceptibilidad de las rutas a la eliminación de nodos.
+% 
+% Suponga que un gráfico no dirigido de n nodos G = (V , E) contiene dos nodos s y
+% t tales que la distancia entre s y t es estrictamente mayor que n/2. Muestre que
+% debe existir algún nodo v, que no sea igual a s o t, tal que al eliminar v de G
+% se destruyen todos los caminos s-t. (En otras palabras, el gráfico obtenido de G
+% eliminando v no contiene un camino de s a t).
+% 
+% Proporcione un algoritmo con tiempo de ejecución O(m + n) para encontrar dicho
+% nodo v.
+
+% Dado un grafo $G = (V , E)$ 
+
+\end{document}
