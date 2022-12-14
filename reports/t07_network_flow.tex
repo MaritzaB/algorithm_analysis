@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
+\usepackage{amsmath}
+\usepackage[shortlabels]{enumitem}
+
+\begin{document}
+\title{Análisis y diseño de algoritmos. \\ Tarea 07}
+\author{Ana Maritza Bello Yañez}
+\maketitle
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\section*{Problema 7.01}
+
+\begin{enumerate}
+
+\item Enumere todos los cortes mínimos de $s-t$ en la red de flujo representada en
+la figura 7.24. La capacidad de cada borde aparece como una etiqueta al lado del
+borde.
+
+
+\item ¿Cuál es la capacidad mínima de un corte $s-t$ en la red de flujo de la
+figura 7.25? Nuevamente, la capacidad de cada borde aparece como una etiqueta al
+lado del borde.
+
+\end{enumerate}    
+
+\section*{Problema 7.07}
+
+Considere un conjunto de clientes de computación móvil en una determinada
+ciudad, cada uno de los cuales necesita estar conectado a una de varias
+\textit{estaciones base posibles}. Supondremos que hay n clientes, con la
+posición de cada cliente especificada por sus coordenadas $(x, y)$ en el plano.
+También hay $k$ estaciones base; la posición de cada uno de ellos también se
+especifica mediante coordenadas $(x, y)$.
+
+Para cada cliente, deseamos conectarlo exactamente a una de las estaciones base.
+
+Nuestra elección de conexiones está restringida de la siguiente manera.
+
+Hay un \textit{parámetro de rango} $r$: un cliente solo se puede conectar a una
+estación base que se encuentra dentro de la distancia $r$. También hay un
+\textit{parámetro de carga} $L$: no se pueden conectar más de $L$ clientes a una
+sola estación base.
+
+Su objetivo es diseñar un algoritmo de tiempo polinomial para el siguiente
+problema. Dadas las posiciones de un conjunto de clientes y un conjunto de
+estaciones base, así como los parámetros de alcance y carga, decida si todos los
+clientes pueden conectarse simultáneamente a una estación base, sujeto a las
+condiciones de alcance y carga en el párrafo anterior.
+
+\section*{Problema 7.10}
+
+Suponga que le dan un grafo dirigido $G = (V , E)$, con una capacidad entera
+positiva $c_e$ en cada arista $e$, una fuente $s \in V$ y un sumidero $t \in V$.
+También le dan un flujo máximo $s-t$ en $G$, definido por un valor de flujo
+$f_e$ en cada arista $e$. El flujo $f$ es acíclico: no hay ciclo en $G$ en el
+que todos los bordes lleven un flujo positivo. El flujo $f$ también tiene un
+valor entero.
+
+Ahora supongamos que elegimos una arista específica $e \cdot \in E$ y reducimos su
+capacidad en 1 unidad. Muestre cómo encontrar un flujo máximo en el gráfico
+capacitado resultante en el tiempo $O(m + n)$, donde $m$ es el número de aristas en
+$G$ y $n$ es el número de nodos.
+
+\section*{Problema 7.12}
+
+Considere el siguiente problema. Tiene una red de flujo con aristas de capacidad
+unitaria: consiste en un gráfico dirigido $G = (V , E)$, una fuente $s \in V$ y
+un sumidero $t \in V$; y $c_e = 1$ para cada $e \in E$. También se te da un
+parámetro $k$.
+
+El objetivo es eliminar los bordes $k$ para reducir el flujo máximo de $s-t$ en
+$G$ tanto como sea posible. En otras palabras, debes encontrar un conjunto de
+aristas $F \subseteq E$ tal que $|F| = k$ y el flujo máximo de $s-t$ en $G = (V
+, E - F)$ es lo más pequeño posible sujeto a esto.
+
+Proporcione un algoritmo de tiempo polinomial para resolver este problema.
+
+\section*{Problema 7.16}
+En los eufóricos primeros días de la Web, a la gente le gustaba afirmar que gran
+parte del enorme potencial de una empresa como Yahoo! estaba en los “globos
+oculares”, el simple hecho de que millones de personas miran sus páginas todos
+los días. Además, al convencer a las personas de que registren datos personales
+en el sitio, un sitio como Yahoo! puede mostrar a cada usuario un anuncio
+extremadamente específico cada vez que visita el sitio, de una manera que las
+cadenas de televisión o las revistas no podrían igualar. Entonces, si un usuario
+le ha dicho a Yahoo! que él o ella es un estudiante de informática de la
+Universidad de Cornell de 20 años de edad, el sitio puede presentar un anuncio
+publicitario para apartamentos en Ithaca, Nueva York; por otro lado, si él o
+ella es un banquero de inversiones de 50 años de edad de Greenwich, Connecticut,
+el sitio puede mostrar un anuncio publicitario que presente Lincoln Town Cars en
+su lugar.
+
+Pero decidir qué anuncios mostrar a qué personas implica un cálculo serio detrás
+de escena. Suponga que los administradores de un sitio web popular han
+identificado $k$ grupos demográficos distintos $G_1, G_2, . . . , G_k$. (Estos
+grupos pueden superponerse; por ejemplo, $G_1$ puede ser igual a todos los
+residentes del estado de Nueva York y $G_2$ puede ser igual a todas las personas
+con un título en informática). El sitio tiene contratos con $m$ anunciantes
+diferentes, para mostrar un cierto número de copias de sus anuncios a los
+usuarios del sitio. Así es como se ve el contrato con el $i$-ésimo anunciante.
+
+\begin{itemize}
+
+\item  Para un subconjunto $X_i \subseteq \{G 1 , . . . , G k \}$ de los grupos
+demográficos, el anunciante $i$ desea que sus anuncios se muestren solo a los
+usuarios que pertenecen al menos a uno de los grupos demográficos del conjunto
+$X_i$.
+
+\item Para un número r i , el anunciante i quiere que sus anuncios se muestren
+al menos a r i usuarios cada minuto.
+
+\end{itemize}
+
+Ahora considere el problema de diseñar una buena política publicitaria, una
+forma de mostrar un solo anuncio a cada usuario del sitio. Supongamos que en un
+minuto dado hay n usuarios visitando el sitio. Como tenemos información de
+registro de cada uno de estos usuarios, sabemos que el usuario j (para $j = 1, 2,
+. . . , n)$ pertenece a un subconjunto $U_j \subseteq \{G_1 , . . . , G_k \}$ de los grupos
+demográficos. El problema es: ¿hay alguna manera de mostrar un solo anuncio a
+cada usuario para que los contratos del sitio con cada uno de los m anunciantes
+se cumplan por ese minuto? (Es decir, para cada $i = 1, 2, . . . , m$, ¿puede al
+menos $r_i$ de los $n$ usuarios, cada uno perteneciente a al menos un grupo
+demográfico en $X_i$ , recibir un anuncio proporcionado por el anunciante $i$?)
+
+Proporcione un algoritmo eficiente para decidir si esto es posible y, de ser
+así, elegir un anuncio para mostrar a cada usuario.
+
+\end{document}
