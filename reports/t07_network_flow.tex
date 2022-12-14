@@ -20,21 +20,17 @@ borde.
 
 \textbf{Solución}
 
-%$X_1 = \{s-u, s-v\}$ ; $Y_1=\{u-t, u-v, v-t \}$; $c_1(X,Y) = 2$
 
-Removidos:
-
-
-$\{s-u, s-v\}$;     $c_1(X,Y) = 2$
+$\text{cut}_1 = \{s-u, s-v\}$;     $c_1(X,Y) = 2$
 
 
-$\{u-t,v-t\}$;      $c_2(X,Y) = 2$
+$\text{cut}_2 = \{u-t,v-t\}$;      $c_2(X,Y) = 2$
 
 
-$\{ u-t, u-v, s-v \}$;  $c_3(X,Y) = 3$
+$\text{cut}_3 = \{ u-t, u-v, s-v \}$;  $c_3(X,Y) = 3$
 
 
-$\{ s-u, v-t\}$;    $c_4(x,Y) = 2$
+$\text{cut}_4 = \{ s-u, v-t\}$;    $c_4(X,Y) = 2$
 
 Por lo tanto, el corte mínimo es 2.
 
@@ -44,6 +40,19 @@ lado del borde.
 
 \textbf{Solución}
 
+
+$\text{cut}_1 = \{s-u, s-v\} = \{2,4\}$;     $c_1(X,Y) = 6$
+
+
+$\text{cut}_2 = \{u-t,v-t\} = \{4,6\}$;      $c_2(X,Y) = 10$
+
+
+$\text{cut}_3 = \{ u-t, u-v, s-v \} = \{4,6,4\}$;  $c_3(X,Y) = 14$
+
+
+$\text{cut}_4 = \{ s-u, v-t\} = \{2,2\}$;    $c_4(X,Y) = 4$
+
+Por lo tanto, $min\_cut(X,Y) = \{4\}$
 
 \end{enumerate}    
 
