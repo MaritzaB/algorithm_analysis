@@ -60,7 +60,7 @@ Por lo tanto, $min\_cut(X,Y) = \{4\}$
 
 Considere un conjunto de clientes de computación móvil en una determinada
 ciudad, cada uno de los cuales necesita estar conectado a una de varias
-\textit{estaciones base posibles}. Supondremos que hay n clientes, con la
+\textit{estaciones base posibles}. Supondremos que hay $n$ clientes, con la
 posición de cada cliente especificada por sus coordenadas $(x, y)$ en el plano.
 También hay $k$ estaciones base; la posición de cada uno de ellos también se
 especifica mediante coordenadas $(x, y)$.
@@ -68,8 +68,6 @@ especifica mediante coordenadas $(x, y)$.
 Para cada cliente, deseamos conectarlo exactamente a una de las estaciones base.
 
 Nuestra elección de conexiones está restringida de la siguiente manera.
-
-\textbf{Solución}
 
 Hay un \textit{parámetro de rango} $r$: un cliente solo se puede conectar a una
 estación base que se encuentra dentro de la distancia $r$. También hay un
@@ -82,19 +80,23 @@ estaciones base, así como los parámetros de alcance y carga, decida si todos l
 clientes pueden conectarse simultáneamente a una estación base, sujeto a las
 condiciones de alcance y carga en el párrafo anterior.
 
+
+
+\textbf{Solución}
+
 \section*{Problema 7.10}
 
 Suponga que le dan un grafo dirigido $G = (V , E)$, con una capacidad entera
-positiva $c_e$ en cada arista $e$, una fuente $s \in V$ y un sumidero $t \in V$.
+positiva $c_e$ en cada arista $e$, una fuente $s \in V$ y un sink $t \in V$.
 También le dan un flujo máximo $s-t$ en $G$, definido por un valor de flujo
 $f_e$ en cada arista $e$. El flujo $f$ es acíclico: no hay ciclo en $G$ en el
 que todos los bordes lleven un flujo positivo. El flujo $f$ también tiene un
 valor entero.
 
-Ahora supongamos que elegimos una arista específica $e \cdot \in E$ y reducimos su
-capacidad en 1 unidad. Muestre cómo encontrar un flujo máximo en el gráfico
-capacitado resultante en el tiempo $O(m + n)$, donde $m$ es el número de aristas en
-$G$ y $n$ es el número de nodos.
+Ahora supongamos que elegimos una arista específica $e \cdot \in E$ y reducimos
+su capacidad en 1 unidad. Muestre cómo encontrar un flujo máximo en el grafo
+capacitado resultante en el tiempo $O(m + n)$, donde $m$ es el número de aristas
+en $G$ y $n$ es el número de nodos.
 
 \textbf{Solución}
 
