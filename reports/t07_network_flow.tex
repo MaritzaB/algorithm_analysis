@@ -18,10 +18,32 @@
 la figura 7.24. La capacidad de cada borde aparece como una etiqueta al lado del
 borde.
 
+\textbf{Solución}
+
+%$X_1 = \{s-u, s-v\}$ ; $Y_1=\{u-t, u-v, v-t \}$; $c_1(X,Y) = 2$
+
+Removidos:
+
+
+$\{s-u, s-v\}$;     $c_1(X,Y) = 2$
+
+
+$\{u-t,v-t\}$;      $c_2(X,Y) = 2$
+
+
+$\{ u-t, u-v, s-v \}$;  $c_3(X,Y) = 3$
+
+
+$\{ s-u, v-t\}$;    $c_4(x,Y) = 2$
+
+Por lo tanto, el corte mínimo es 2.
 
 \item ¿Cuál es la capacidad mínima de un corte $s-t$ en la red de flujo de la
 figura 7.25? Nuevamente, la capacidad de cada borde aparece como una etiqueta al
 lado del borde.
+
+\textbf{Solución}
+
 
 \end{enumerate}    
 
@@ -37,6 +59,8 @@ especifica mediante coordenadas $(x, y)$.
 Para cada cliente, deseamos conectarlo exactamente a una de las estaciones base.
 
 Nuestra elección de conexiones está restringida de la siguiente manera.
+
+\textbf{Solución}
 
 Hay un \textit{parámetro de rango} $r$: un cliente solo se puede conectar a una
 estación base que se encuentra dentro de la distancia $r$. También hay un
@@ -63,6 +87,8 @@ capacidad en 1 unidad. Muestre cómo encontrar un flujo máximo en el gráfico
 capacitado resultante en el tiempo $O(m + n)$, donde $m$ es el número de aristas en
 $G$ y $n$ es el número de nodos.
 
+\textbf{Solución}
+
 \section*{Problema 7.12}
 
 Considere el siguiente problema. Tiene una red de flujo con aristas de capacidad
@@ -77,54 +103,56 @@ aristas $F \subseteq E$ tal que $|F| = k$ y el flujo máximo de $s-t$ en $G = (V
 
 Proporcione un algoritmo de tiempo polinomial para resolver este problema.
 
-\section*{Problema 7.16}
-En los eufóricos primeros días de la Web, a la gente le gustaba afirmar que gran
-parte del enorme potencial de una empresa como Yahoo! estaba en los “globos
-oculares”, el simple hecho de que millones de personas miran sus páginas todos
-los días. Además, al convencer a las personas de que registren datos personales
-en el sitio, un sitio como Yahoo! puede mostrar a cada usuario un anuncio
-extremadamente específico cada vez que visita el sitio, de una manera que las
-cadenas de televisión o las revistas no podrían igualar. Entonces, si un usuario
-le ha dicho a Yahoo! que él o ella es un estudiante de informática de la
-Universidad de Cornell de 20 años de edad, el sitio puede presentar un anuncio
-publicitario para apartamentos en Ithaca, Nueva York; por otro lado, si él o
-ella es un banquero de inversiones de 50 años de edad de Greenwich, Connecticut,
-el sitio puede mostrar un anuncio publicitario que presente Lincoln Town Cars en
-su lugar.
+% \textbf{Solución}
 
-Pero decidir qué anuncios mostrar a qué personas implica un cálculo serio detrás
-de escena. Suponga que los administradores de un sitio web popular han
-identificado $k$ grupos demográficos distintos $G_1, G_2, . . . , G_k$. (Estos
-grupos pueden superponerse; por ejemplo, $G_1$ puede ser igual a todos los
-residentes del estado de Nueva York y $G_2$ puede ser igual a todas las personas
-con un título en informática). El sitio tiene contratos con $m$ anunciantes
-diferentes, para mostrar un cierto número de copias de sus anuncios a los
-usuarios del sitio. Así es como se ve el contrato con el $i$-ésimo anunciante.
-
-\begin{itemize}
-
-\item  Para un subconjunto $X_i \subseteq \{G 1 , . . . , G k \}$ de los grupos
-demográficos, el anunciante $i$ desea que sus anuncios se muestren solo a los
-usuarios que pertenecen al menos a uno de los grupos demográficos del conjunto
-$X_i$.
-
-\item Para un número r i , el anunciante i quiere que sus anuncios se muestren
-al menos a r i usuarios cada minuto.
-
-\end{itemize}
-
-Ahora considere el problema de diseñar una buena política publicitaria, una
-forma de mostrar un solo anuncio a cada usuario del sitio. Supongamos que en un
-minuto dado hay n usuarios visitando el sitio. Como tenemos información de
-registro de cada uno de estos usuarios, sabemos que el usuario j (para $j = 1, 2,
-. . . , n)$ pertenece a un subconjunto $U_j \subseteq \{G_1 , . . . , G_k \}$ de los grupos
-demográficos. El problema es: ¿hay alguna manera de mostrar un solo anuncio a
-cada usuario para que los contratos del sitio con cada uno de los m anunciantes
-se cumplan por ese minuto? (Es decir, para cada $i = 1, 2, . . . , m$, ¿puede al
-menos $r_i$ de los $n$ usuarios, cada uno perteneciente a al menos un grupo
-demográfico en $X_i$ , recibir un anuncio proporcionado por el anunciante $i$?)
-
-Proporcione un algoritmo eficiente para decidir si esto es posible y, de ser
-así, elegir un anuncio para mostrar a cada usuario.
+% \section*{Problema 7.16}
+% En los eufóricos primeros días de la Web, a la gente le gustaba afirmar que gran
+% parte del enorme potencial de una empresa como Yahoo! estaba en los “globos
+% oculares”, el simple hecho de que millones de personas miran sus páginas todos
+% los días. Además, al convencer a las personas de que registren datos personales
+% en el sitio, un sitio como Yahoo! puede mostrar a cada usuario un anuncio
+% extremadamente específico cada vez que visita el sitio, de una manera que las
+% cadenas de televisión o las revistas no podrían igualar. Entonces, si un usuario
+% le ha dicho a Yahoo! que él o ella es un estudiante de informática de la
+% Universidad de Cornell de 20 años de edad, el sitio puede presentar un anuncio
+% publicitario para apartamentos en Ithaca, Nueva York; por otro lado, si él o
+% ella es un banquero de inversiones de 50 años de edad de Greenwich, Connecticut,
+% el sitio puede mostrar un anuncio publicitario que presente Lincoln Town Cars en
+% su lugar.
+% 
+% Pero decidir qué anuncios mostrar a qué personas implica un cálculo serio detrás
+% de escena. Suponga que los administradores de un sitio web popular han
+% identificado $k$ grupos demográficos distintos $G_1, G_2, . . . , G_k$. (Estos
+% grupos pueden superponerse; por ejemplo, $G_1$ puede ser igual a todos los
+% residentes del estado de Nueva York y $G_2$ puede ser igual a todas las personas
+% con un título en informática). El sitio tiene contratos con $m$ anunciantes
+% diferentes, para mostrar un cierto número de copias de sus anuncios a los
+% usuarios del sitio. Así es como se ve el contrato con el $i$-ésimo anunciante.
+% 
+% \begin{itemize}
+% 
+% \item  Para un subconjunto $X_i \subseteq \{G 1 , . . . , G k \}$ de los grupos
+% demográficos, el anunciante $i$ desea que sus anuncios se muestren solo a los
+% usuarios que pertenecen al menos a uno de los grupos demográficos del conjunto
+% $X_i$.
+% 
+% \item Para un número r i , el anunciante i quiere que sus anuncios se muestren
+% al menos a r i usuarios cada minuto.
+% 
+% \end{itemize}
+% 
+% Ahora considere el problema de diseñar una buena política publicitaria, una
+% forma de mostrar un solo anuncio a cada usuario del sitio. Supongamos que en un
+% minuto dado hay n usuarios visitando el sitio. Como tenemos información de
+% registro de cada uno de estos usuarios, sabemos que el usuario j (para $j = 1, 2,
+% . . . , n)$ pertenece a un subconjunto $U_j \subseteq \{G_1 , . . . , G_k \}$ de los grupos
+% demográficos. El problema es: ¿hay alguna manera de mostrar un solo anuncio a
+% cada usuario para que los contratos del sitio con cada uno de los m anunciantes
+% se cumplan por ese minuto? (Es decir, para cada $i = 1, 2, . . . , m$, ¿puede al
+% menos $r_i$ de los $n$ usuarios, cada uno perteneciente a al menos un grupo
+% demográfico en $X_i$ , recibir un anuncio proporcionado por el anunciante $i$?)
+% 
+% Proporcione un algoritmo eficiente para decidir si esto es posible y, de ser
+% así, elegir un anuncio para mostrar a cada usuario.
 
 \end{document}
