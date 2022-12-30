@@ -2,6 +2,8 @@
 \usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
 \usepackage{amsmath}
 \usepackage[shortlabels]{enumitem}
+\usepackage{pgf}  %Para realizar figures
+\usepackage{graphicx}
 
 \begin{document}
 \title{Análisis y diseño de algoritmos. \\ Tarea 07}
@@ -81,8 +83,22 @@ clientes pueden conectarse simultáneamente a una estación base, sujeto a las
 condiciones de alcance y carga en el párrafo anterior.
 
 
-
 \textbf{Solución}
+
+Cada uno de los clientes está representado por un nodo $v$ y cada estación por
+un nodo $w$. Estos los conectamos a una fuente de capacidad 1 y a un sink de
+capacidad $L$.
+
+\includegraphics[scale=0.3]{figures/bipartite_matching.png}
+
+Si existe un flujo de $s$ a $t$ de valor $n$, entonces existe una conexión
+factible, es decir, todos los clientes se conectan a una estación base. Si
+existe esta conexión, entonces enviamos la unidad de flujo de $s$ a $t$.
+Mientras la estación se encuentre dentro del radio del usuario entonces se puede
+conectar.
+
+La máxima asignación válida de clientes a estaciones corresponde con un flujo
+máximo válido del mismo valor.
 
 \section*{Problema 7.10}
 
@@ -99,6 +115,9 @@ capacitado resultante en el tiempo $O(m + n)$, donde $m$ es el número de arista
 en $G$ y $n$ es el número de nodos.
 
 \textbf{Solución}
+
+
+
 
 \section*{Problema 7.12}
 

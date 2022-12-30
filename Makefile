@@ -24,6 +24,7 @@ endef
 define renderLatex
     cd $(<D) && pdflatex $(<F)
 	cd $(<D) && pdflatex $(<F)
+	cd $(<D) && pdflatex $(<F)
 endef
 
 reports/t01_stable_matching.pdf: reports/t01_stable_matching.tex
